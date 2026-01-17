@@ -1,0 +1,12 @@
+{
+    "patient": {
+        "email": "jean.dupont@email.com",
+        "password": "Password123!",
+        "name": "Jean Dupont"
+    },
+    "praticien": {
+        "email": "dr.martin@medibook.fr",
+        "password": "Password123!",
+        "name": "Claire Martin"
+    }
+}
