@@ -2,7 +2,7 @@ import { Page, expect } from "@playwright/test";
 import users from "../fixtures/users.json";
 
 async function login(page: Page, email: string, password: string) {
-    await page.goto("/login");
+    await page.goto("/");
 
     await page.getByLabel(/email|adresse email/i).fill(email);
     await page.locator('#password').fill(password);
@@ -13,10 +13,10 @@ async function login(page: Page, email: string, password: string) {
     await expect(page).not.toHaveURL(/login/);
 }
 
-export async function loginAsPatient(page: Page) {
-    await login(page, users.patient.email, users.patient.password);
+export async function loginAsStandardAccount(page: Page) {
+    await login(page, users.standard_account.email, users.standard_account.password);
 }
 
 export async function loginAsPractitioner(page: Page) {
-    await login(page, users.praticien.email, users.praticien.password);
+    await login(page, users.double_auth_account.email, users.double_auth_account.password);
 }

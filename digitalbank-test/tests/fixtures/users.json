@@ -1,12 +1,15 @@
 {
-    "patient": {
-        "email": "jean.dupont@email.com",
-        "password": "Password123!",
-        "name": "Jean Dupont"
+    "standard_account": {
+        "email": "test@digitalbank.fr",
+        "password": "Test1234!"
     },
-    "praticien": {
-        "email": "dr.martin@medibook.fr",
-        "password": "Password123!",
-        "name": "Claire Martin"
+    "extra_account": {
+        "email": "jean.dupont@email.com",
+        "password": "Password123!"
+    },
+    "double_auth_account": {
+        "email": "marie.martin@email.com",
+        "password": "SecurePass456!",
+        "code": 123456
     }
 }
