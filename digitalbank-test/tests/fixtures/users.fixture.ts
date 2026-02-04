@@ -1,3 +1,5 @@
+import { createShadow } from "swiper/effect-utils";
+
 export const usersFixture = {
 
   jean_informations: {
@@ -18,10 +20,10 @@ export const usersFixture = {
 
   test_informations: {
     email: "test@digitalbank.fr",
-    password: "Test1234!",
+    password: "test@digitalbank.fr",
     name: "Utilisateur Test",
     phone: "+33 6 00 00 00 00",
     twoFactorEnabled: false,
   },
-  
+
 } as const;
