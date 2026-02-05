@@ -9,23 +9,17 @@ type AccountFixture = {
 
 export class DashboardPage {
     readonly page: Page;
-    readonly logoutButton: Locator;
     readonly balanceCards: Locator;
     readonly transactionCards: Locator;
 
     constructor(page: Page) {
         this.page = page;
-        this.logoutButton = page.getByTestId('btn-logout');
         this.balanceCards = page.getByTestId('balance-cards');
         this.transactionCards = page.getByTestId('transaction-list');
     }
 
     async welcomeUser(name: string) {
         await expect(this.page.getByText(name)).toBeVisible();
-    }
-
-    async logout() {
-        await this.logoutButton.click();
     }
 
     async cartBanksAreVisible(accounts: readonly AccountFixture[]) {

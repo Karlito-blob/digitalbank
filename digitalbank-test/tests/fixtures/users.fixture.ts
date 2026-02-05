@@ -1,5 +1,3 @@
-import { createShadow } from "swiper/effect-utils";
-
 export const usersFixture = {
 
   jean_informations: {

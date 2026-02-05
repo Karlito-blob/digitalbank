@@ -13,7 +13,7 @@ export const messagesFixture = {
         invalid_iban: "IBAN invalide. Format attendu: FR76 XXXX XXXX XXXX XXXX XXXX XXX"
     },
     valid_credentials: {
-        reset_link_sent: "Un lien de réinitialisation a été envoyé à votre adresse email",
+        reset_link_sent: "Un lien de réinitialisation a été envoyé à",
         success_virement: 'Virement effectué avec succès !'
     }
 } as const;

@@ -1,0 +1,51 @@
+import LoginPage from '../../support/pages/LoginPage';
+import DashboardPage from '../../support/pages/DashboardPage';
+import TransferPage from '../../support/pages/TransferPage';
+
+describe('Virements entre comptes propres', () => {
+    const loginPage = new LoginPage();
+    const dashboardPage = new DashboardPage();
+    const transferPage = new TransferPage();
+
+    beforeEach(() => {
+        cy.fixture('users').as('usersData'); // charger la fixture
+        cy.visit('http://127.0.0.1:8080/index.html'); // page de connexion
+    });
+
+    it('Doit effectuer un virement du compte courant vers le Livret A', function () {
+        const user = this.usersData.balanceUser;
+        const transferAmount = user.transfer.amount; // montant depuis la fixture
+
+      
+        // Connexion
+       
+        loginPage.login(user.email, user.password);
+
+        // Vérification message de bienvenue
+        dashboardPage.verifyGreeting('Utilisateur 👋');
+
+       
+        // Aller sur l'onglet Virements
+      
+        transferPage.transferTab().click();
+
+        // Vérifier qu'on est sur la page de virement
+        transferPage.transferTitle().should('be.visible');
+
+        
+        // Effectuer le virement
+        
+        transferPage.makeTransfer(
+            'Compte Courant - 5 000,00 €',  // compte débiteur
+            'Livret A - 15 000,00 €',       // compte créditeur
+            transferAmount                   // montant depuis la fixture
+        );
+
+         // Vérifier le message de succès
+        cy.get('#transfer-success') 
+            .should('not.have.class', 'hidden')  // Vérifier que la classe 'hidden' a disparu
+            .and('contain.text', 'Virement effectué avec succès !'); // Vérifier que le texte est correct
+
+    });
+});
+ 

@@ -13,3 +13,8 @@ export const jddTest = {
   accounts: accountsFixture.test_accounts,
   transactions: transactionsFixture.test_transactions,
 };
+
+export const jddMarie = {
+  user: usersFixture.marie_informations,
+  accounts: accountsFixture.marie_accounts,
+};

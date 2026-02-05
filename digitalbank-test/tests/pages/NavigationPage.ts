@@ -6,13 +6,17 @@ export class NavigationPage {
     readonly transferTab: Locator;
     readonly billsTab: Locator;
     readonly securityTab: Locator;
+    readonly logoutButton: Locator;
 
     constructor(page: Page) {
         this.page = page;
+
         this.dashboardTab = page.getByTestId('tab-dashboard');
         this.transferTab = page.getByTestId('tab-transfer');
         this.billsTab = page.getByTestId('tab-bills');
         this.securityTab = page.getByTestId('tab-security');
+        this.logoutButton = page.getByTestId('btn-logout');
+
     }
 
     async navigateToLogin() {
@@ -21,6 +25,7 @@ export class NavigationPage {
 
     async navigateToDashboard() {
         await this.dashboardTab.click();
+
     }
 
     async navigateToTransfer() {
@@ -33,5 +38,9 @@ export class NavigationPage {
 
     async navigateToSecurityPage() {
         await this.securityTab.click();
+    }
+
+    async logout() {
+        await this.logoutButton.click();
     }
 }
