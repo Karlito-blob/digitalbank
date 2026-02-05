@@ -88,7 +88,7 @@ export default defineConfig({
   use: {
     baseURL: process.env.BASE_URL || 'http://127.0.0.1:5500/',
     trace: 'on-first-retry',
-    screenshot: 'only-on-failure',
+    screenshot: 'on',
     video: 'retain-on-failure',
   },
   reporter: [['html', { open: 'never' }], ['list']],

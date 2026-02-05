@@ -19,10 +19,6 @@ export class ConnexionPage {
         this.confirmResetButton = page.getByTestId('btn-reset-password');
     }
 
-    async navigate() {
-        await this.page.goto("/");
-    }
-
     async formIsVisible() {
         await expect(this.emailInput).toBeVisible();
         await expect(this.passwordInput).toBeVisible();
