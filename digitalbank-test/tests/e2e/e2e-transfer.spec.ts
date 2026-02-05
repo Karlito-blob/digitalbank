@@ -4,17 +4,17 @@ import { test, expect } from "@playwright/test";
 import { ConnexionPage } from "../pages/ConnexionPage";
 import { DashboardPage } from "../pages/DashboardPage";
 import { NavigationPage } from "../pages/NavigationPage";
-import { TransferPage } from "../pages/TransferPage";
+import { TransferPage } from "../pages/TransfertPage";
 
 // Fixture
 import { jddJean, jddTest } from "../fixtures/jdd.fixture";
-import { messagesFixture } from "../fixtures/error-message.fixture";
+import { messagesFixture } from "../fixtures/alertMessage.fixture";
 
 import { expectMessage } from "../utils/expectMessage.utils";
 
 const individu = jddJean;
 
-test.describe("Virements", () => {
+test.describe("Virements - Beneficiaire", () => {
     let connexionPage: ConnexionPage;
     let dashboardPage: DashboardPage;
     let navigationPage: NavigationPage;
@@ -27,7 +27,7 @@ test.describe("Virements", () => {
         await connexionPage.login(individu.user.email, individu.user.password);
     });
 
-    test("E2E-BEN-01 - Ajout d'un bénéficiaire réussi", async () => {
+    test("E2E - BEN-01 - Ajout d'un bénéficiaire réussi", async () => {
         const navigationPage = new NavigationPage(connexionPage.page);
         const transferPage = new TransferPage(connexionPage.page);
         await navigationPage.navigateToTransfer();
@@ -40,6 +40,14 @@ test.describe("Virements", () => {
         const transferPage = new TransferPage(connexionPage.page);
         await navigationPage.navigateToTransfer();
         await transferPage.virementInterne(individu.accounts[0].id, individu.accounts[1].id, 100, "Virement test");
-        await expectMessage(transferPage.successMessage, messagesFixture.valid_credentials.success_virement);
+        await expectMessage(transferPage.successTransfertMessage, messagesFixture.valid_credentials.success_virement);
     });
+
+    // test("E2E-TRF-INT-02 - Virement interne sans destinataire", async () => {
+    //     const navigationPage = new NavigationPage(connexionPage.page);
+    //     const transferPage = new TransferPage(connexionPage.page);
+    //     await navigationPage.navigateToTransfer();
+    //     await transferPage.virementInterne(individu.accounts[0].id, individu.accounts[0].id, 100, "Virement test");
+    //     await expectMessage(transferPage.errorTransfertMessage, messagesFixture.error_messages.missing_destinataire);
+    // });
 });

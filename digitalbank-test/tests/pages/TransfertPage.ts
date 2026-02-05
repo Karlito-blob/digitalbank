@@ -8,12 +8,13 @@ export class TransferPage {
     readonly inputBeneficiaryName: Locator;
     readonly inputBeneficiaryIBAN: Locator
     readonly saveBeneficiaryButton: Locator;
+    readonly backToTransferButton: Locator;
     readonly beneficiariesList: Locator;
     readonly selectToAccountDropdown: Locator;
     readonly selectFromAccountDropdown: Locator;
     readonly inputAmount: Locator;
     readonly inputDescription: Locator;
-    readonly sumitTransferButton: Locator;
+    readonly sumitTransfertButton: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -24,7 +25,8 @@ export class TransferPage {
         this.selectToAccountDropdown = page.getByTestId('select-to-account');
         this.inputAmount = page.getByTestId('input-amount');
         this.inputDescription = page.getByTestId('input-description');
-        this.sumitTransferButton = page.getByTestId('btn-submit-transfer');
+        this.sumitTransfertButton = page.getByTestId('btn-submit-transfer');
+        this.backToTransferButton = page.getByTestId('btn-cancel-beneficiary');
 
         this.beneficiariesList = page.getByTestId('beneficiary-list');
         this.addBeneficiaryButton = page.getByTestId('btn-add-beneficiary');
@@ -33,12 +35,31 @@ export class TransferPage {
         this.saveBeneficiaryButton = page.getByTestId('btn-save-beneficiary');
     }
 
+    async checkFormTransfer() {
+        await expect(this.selectFromAccountDropdown).toBeVisible();
+        await expect(this.selectToAccountDropdown).toBeVisible();
+        await expect(this.inputAmount).toBeVisible();
+        await expect(this.inputDescription).toBeVisible();
+        await expect(this.sumitTransfertButton).toBeVisible();
+    }
+
+    async checkModalBeneficiary() {
+        await this.externalTab.click();
+        await this.addBeneficiaryButton.click();
+        await expect(this.inputBeneficiaryName).toBeVisible();
+        await expect(this.inputBeneficiaryIBAN).toBeVisible();
+        await expect(this.saveBeneficiaryButton).toBeVisible();
+        await expect(this.backToTransferButton).toBeVisible();
+        await this.backToTransferButton.click();
+        await expect(this.inputBeneficiaryName).not.toBeVisible();
+    }
+
     async virementInterne(fromAccountId: number, toAccountId: number, amount: number, description: string) {
         await this.selectFromAccountDropdown.selectOption({ value: String(fromAccountId) });
         await this.selectToAccountDropdown.selectOption({ value: String(toAccountId) });
         await this.inputAmount.fill(amount.toString());
         await this.inputDescription.fill(description);
-        await this.sumitTransferButton.click();
+        await this.sumitTransfertButton.click();
     }
 
     async addNewBeneficiaire(beneficiary: string, iban: string) {
@@ -53,11 +74,15 @@ export class TransferPage {
         await expect(this.beneficiariesList).toContainText(beneficiary);
     }
 
-    get successMessage(): Locator {
+    get successTransfertMessage(): Locator {
         return this.page.getByTestId('transfer-success');
     }
 
-    get errorMessage(): Locator {
+    get errorTransfertMessage(): Locator {
         return this.page.getByTestId('transfer-error');
+    }
+
+    get errorBeneficiaryMessage(): Locator {
+        return this.page.getByTestId('beneficiary-error');
     }
 }

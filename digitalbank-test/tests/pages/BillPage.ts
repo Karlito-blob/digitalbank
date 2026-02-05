@@ -22,11 +22,9 @@ export class BillPage {
         const bill = this.pendingBillItemByReference(reference);
 
         await expect(bill).toBeVisible();
-
         const payButton = bill.getByRole("button", { name: "Payer la facture" });
         await expect(payButton).toBeVisible();
         await payButton.click();
-
         await expect(this.page.getByText(expectedSuccessMessage)).toBeVisible();
     }
 

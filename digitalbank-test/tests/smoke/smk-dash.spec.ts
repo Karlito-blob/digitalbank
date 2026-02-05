@@ -25,7 +25,7 @@ test.describe("Dashboard Smoke Tests", () => {
     }
     );
 
-    test("SMK-DASH-01 - Chargement des cartes et de l'historique des transactions", async () => {
+    test("SMK-DASH-01 - Chargement du dashboard", async () => {
         await dashboardPage.welcomeUser(individu.user.name);
         await dashboardPage.cartBanksAreVisible(individu.accounts);
         await dashboardPage.transactionHistoryIsVisible();

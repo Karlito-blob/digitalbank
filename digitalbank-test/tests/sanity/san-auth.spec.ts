@@ -1,5 +1,5 @@
 /* eslint-disable testing-library/prefer-screen-queries */
-import { test, expect } from "@playwright/test";
+import { test } from "@playwright/test";
 
 //POM
 import { ConnexionPage } from "../pages/ConnexionPage";
