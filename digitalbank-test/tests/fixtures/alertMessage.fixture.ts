@@ -14,6 +14,7 @@ export const messagesFixture = {
     },
     valid_credentials: {
         reset_link_sent: "Un lien de réinitialisation a été envoyé à",
-        success_virement: 'Virement effectué avec succès !'
+        success_virement: 'Virement effectué avec succès !',
+        success_change_password : 'Mot de passe modifié avec succès !'
     }
 } as const;

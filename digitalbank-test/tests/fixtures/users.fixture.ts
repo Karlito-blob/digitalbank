@@ -3,6 +3,7 @@ export const usersFixture = {
   jean_informations: {
     email: "jean.dupont@email.com",
     password: "Password123!",
+    new_password: "NewPassword123!",
     name: "Jean Dupont",
     phone: "+33 6 12 34 56 78",
     twoFactorEnabled: false,
@@ -18,7 +19,7 @@ export const usersFixture = {
 
   test_informations: {
     email: "test@digitalbank.fr",
-    password: "test@digitalbank.fr",
+    password: "Test1234!",
     name: "Utilisateur Test",
     phone: "+33 6 00 00 00 00",
     twoFactorEnabled: false,

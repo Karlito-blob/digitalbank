@@ -1,23 +1,16 @@
 import { expect, Locator } from "@playwright/test";
 
-// Toggle un checkbox et vérifie l'état final attendu
+export async function setToggle(checkbox: Locator, expectedChecked: boolean) {
+    // parent group du checkbox -> slider visible associé
+    const group = checkbox.locator('xpath=ancestor::div[contains(@class,"toggle-group")]');
+    const slider = group.locator(".toggle-slider");
 
-// export async function switchToggle(
-//   toggle: Locator,
-//   expectedChecked: boolean
-// ) {
-//   // (optionnel) état avant – utile en debug
-//   const before = await toggle.isChecked();
-//   console.log("Toggle BEFORE:", before);
+    await slider.waitFor({ state: "visible" });
 
-//   await toggle.click();
+    const current = await checkbox.isChecked();
+    if (current !== expectedChecked) {
+        await slider.click();
+    }
 
-//   if (expectedChecked) {
-//     await expect(toggle).toBeChecked();
-//   } else {
-//     await expect(toggle).toBeUnchecked();
-//   }
-
-//   const after = await toggle.isChecked();
-//   console.log("Toggle AFTER:", after);
-// }
+    await expect(checkbox).toHaveJSProperty("checked", expectedChecked);
+}

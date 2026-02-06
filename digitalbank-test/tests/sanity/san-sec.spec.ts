@@ -13,8 +13,10 @@ import { jddJean } from "../fixtures/jdd.fixture";
 // utils
 import { expectMessage } from "../utils/expectMessage.utils";
 import { expectPasswordRequirements } from "../utils/passwordRequirements";
+import { setToggle } from "../utils/toggle.utils";
 
 const individu = jddJean;
+
 const getPasswordRulesLocators = (securityPage: SecurityPage) => ({
     length: securityPage.reqLength,
     upper: securityPage.reqUpper,
@@ -24,12 +26,12 @@ const getPasswordRulesLocators = (securityPage: SecurityPage) => ({
 });
 
 async function openChangePasswordModal(securityPage: SecurityPage) {
-  await securityPage.changePasswordButton.click();
-  await expect(securityPage.inputNewPassword).toBeVisible();
+    await securityPage.changePasswordButton.click();
+    await expect(securityPage.inputNewPassword).toBeVisible();
 
-  // Déclenche l’affichage si "hidden" au départ
-  await securityPage.typeNewPassword("a");
-  await securityPage.expectRequirementsVisible();
+    // Déclenche l’affichage si "hidden" au départ
+    await securityPage.typeNewPassword("a");
+    await securityPage.expectRequirementsVisible();
 }
 
 test.describe("Sanity tests - ", () => {
@@ -95,7 +97,7 @@ test.describe("Sanity tests - ", () => {
         await navigationPage.navigateToSecurityPage();
     });
 
-    test("Case: too_short", async ({  }) => {
+    test("Case: too_short", async ({ }) => {
         await openChangePasswordModal(securityPage);
         const tc = passwordsFixture.too_short;
         await securityPage.typeNewPassword(tc.value);
@@ -128,5 +130,28 @@ test.describe("Sanity tests - ", () => {
         const tc = passwordsFixture.fully_compliant;
         await securityPage.typeNewPassword(tc.value);
         await expectPasswordRequirements(getPasswordRulesLocators(securityPage), tc.expected);
+    });
+});
+
+test.describe("Sanity tests - ", () => {
+    let connexionPage: ConnexionPage;
+    let navigationPage: NavigationPage;
+    let securityPage: SecurityPage;
+
+    test.beforeEach(async ({ page }) => {
+        connexionPage = new ConnexionPage(page);
+        navigationPage = new NavigationPage(page);
+        securityPage = new SecurityPage(page);
+        await navigationPage.navigateToLogin();
+        await connexionPage.login(individu.user.email, individu.user.password);
+        await navigationPage.navigateToSecurityPage();
+    });
+
+    test("SAN-2FA-TGL-01 - Activation 2FA", async ({ page }) => {
+        expect(await securityPage.is2FAEnabled()).toBe(false);
+        await setToggle(securityPage.toggle2FA, true);
+        await navigationPage.navigateToDashboard();
+        await navigationPage.navigateToSecurityPage();
+        expect(await securityPage.is2FAEnabled()).toBe(true);
     });
 });

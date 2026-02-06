@@ -30,7 +30,7 @@ export class SecurityPage {
 
         this.toggle2FA = page.getByTestId('toggle-2fa');
         this.toggleEmailNotifications = page.getByTestId('toggle-email-notifications');
-        this.toggleSmsNotifications = page.locator('toggle-sms-notifications');
+        this.toggleSmsNotifications = page.getByTestId('toggle-sms-notifications');
         this.changePasswordButton = page.getByTestId('btn-change-password');
 
         this.infoUsername = page.getByTestId('user-name');
@@ -49,22 +49,24 @@ export class SecurityPage {
         this.reqLower = page.locator("#req-lower");
         this.reqNumber = page.locator("#req-number");
         this.reqSpecial = page.locator("#req-special");
-    }
+    };
 
     async switchToggle2FA() {
-        await this.toggle2FA.click();
-        await expect(this.toggle2FA).toBeChecked();
-    }
+        await this.toggle2FA
+            .locator("..")
+            .locator(".toggle-slider")
+            .click();
+    };
 
     async switchToggleEmailNotifications() {
-        await this.toggleEmailNotifications.click();
+        await this.toggleEmailNotifications.check();
         await expect(this.toggleEmailNotifications).toBeChecked();
-    }
+    };
 
     async switchToggleSmsNotifications() {
-        await this.toggleSmsNotifications.click();
+        await this.toggleSmsNotifications.check();
         await expect(this.toggleSmsNotifications).toBeChecked();
-    }
+    };
 
     async changeCurrentPassword(currentPassword: string, newPassword: string, newPasswordConfirm: string) {
         await this.changePasswordButton.click();
@@ -72,19 +74,19 @@ export class SecurityPage {
         await this.inputNewPassword.fill(newPassword);
         await this.inputConfirmNewPassword.fill(newPasswordConfirm);
         await this.submitChangePasswordButton.click();
-    }
+    };
 
     async verifyTogglesVisible() {
         await expect(this.toggle2FA).toBeVisible();
         await expect(this.toggleEmailNotifications).toBeVisible();
         await expect(this.toggleSmsNotifications).toBeVisible();
-    }
+    };
 
     async verifyUserInfo(username: string, email: string, phone: string) {
         await expect(this.infoUsername).toHaveText(username);
         await expect(this.infoEmail).toHaveText(email);
         await expect(this.infoPhone).toHaveText(phone);
-    }
+    };
 
     async verifyModalChangePassword() {
         await this.changePasswordButton.click();
@@ -95,18 +97,26 @@ export class SecurityPage {
         await expect(this.cancelChangePasswordButton).toBeVisible();
         await this.cancelChangePasswordButton.click();
         await expect(this.inputCurrentPassword).not.toBeVisible();
-    }
+    };
 
     async typeNewPassword(value: string) {
         await this.inputNewPassword.fill(value);
-    }
+    };
 
     async expectRequirementsVisible() {
         await expect(this.requirements).toBeVisible();
+    };
+
+    async is2FAEnabled(): Promise<boolean> {
+        return await this.toggle2FA.isChecked();
     }
 
     get errorPasswordMessage() {
         return this.page.getByTestId('password-error');
-    }
+    };
+
+    get successChangePassword() {
+        return this.page.getByTestId('security-success')
+    };
 
 }
