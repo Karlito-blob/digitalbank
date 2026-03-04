@@ -79,19 +79,3 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI,
   },
 });
-
-
-// import { defineConfig } from '@playwright/test';
-
-// export default defineConfig({
-//   testDir: './tests',
-//   timeout: 30_000,
-//   retries: 1,
-//   use: {
-//     baseURL: process.env.BASE_URL || 'http://127.0.0.1:5500/',
-//     trace: 'on-first-retry',
-//     screenshot: 'on',
-//     video: 'retain-on-failure',
-//   },
-//   reporter: [['html', { open: 'never' }], ['list']],
-// });
