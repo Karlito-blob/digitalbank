@@ -7,7 +7,7 @@ import { NavigationPage } from "../pages/NavigationPage";
 import { TransferPage } from "../pages/TransfertPage";
 
 // Fixture
-import { jddJean, jddTest } from "../fixtures/jdd.fixture";
+import { jddJean } from "../fixtures/jdd.fixture";
 import { messagesFixture } from "../fixtures/alertMessage.fixture";
 
 import { expectMessage } from "../utils/expectMessage.utils";
@@ -43,11 +43,11 @@ test.describe("Virements - Beneficiaire", () => {
         await expectMessage(transferPage.successTransfertMessage, messagesFixture.valid_credentials.success_virement);
     });
 
-    // test("E2E-TRF-INT-02 - Virement interne sans destinataire", async () => {
-    //     const navigationPage = new NavigationPage(connexionPage.page);
-    //     const transferPage = new TransferPage(connexionPage.page);
-    //     await navigationPage.navigateToTransfer();
-    //     await transferPage.virementInterne(individu.accounts[0].id, individu.accounts[0].id, 100, "Virement test");
-    //     await expectMessage(transferPage.errorTransfertMessage, messagesFixture.error_messages.missing_destinataire);
-    // });
+    test("E2E-TRF-EXT-02 - Virement vers bénéficiaire réussi", async () => {
+        const navigationPage = new NavigationPage(connexionPage.page);
+        const transferPage = new TransferPage(connexionPage.page);
+        await navigationPage.navigateToTransfer();
+        await transferPage.virementExterne(individu.accounts[0].id, individu.beneficiaires[0].name, 1000, "Virement test");
+        await expectMessage(transferPage.successTransfertMessage, messagesFixture.valid_credentials.success_virement);
+    });
 });

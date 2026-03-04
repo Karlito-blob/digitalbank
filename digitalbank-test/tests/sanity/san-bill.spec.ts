@@ -9,7 +9,6 @@ import { BillPage } from "../pages/BillPage";
 // Fixtures
 import { messagesFixture } from "../fixtures/alertMessage.fixture";
 import { jddJean } from "../fixtures/jdd.fixture";
-import { twoFactorAuthFixture } from "../fixtures/2fa.fixture";
 
 // utils
 import { expectMessage } from "../utils/expectMessage.utils";
@@ -33,5 +32,6 @@ test.describe("Sanity tests - Paiement de facture", () => {
     });
 
     test("SAN-BILL-01 - Affichage factures en attente", async ({ page }) => {
+        
     });
 });    

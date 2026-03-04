@@ -20,7 +20,6 @@ test.describe("Authentication Smoke Tests", () => {
         connexionPage = new ConnexionPage(page);
         dashboardPage = new DashboardPage(page);
         navigationPage = new NavigationPage(page);
-
         await navigationPage.navigateToLogin();
     });
 

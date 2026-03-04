@@ -20,7 +20,6 @@ export class BillPage {
 
     async payBillPending(reference: string, expectedSuccessMessage: string) {
         const bill = this.pendingBillItemByReference(reference);
-
         await expect(bill).toBeVisible();
         const payButton = bill.getByRole("button", { name: "Payer la facture" });
         await expect(payButton).toBeVisible();

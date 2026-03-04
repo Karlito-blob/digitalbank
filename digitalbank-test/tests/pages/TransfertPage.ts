@@ -33,6 +33,7 @@ export class TransferPage {
         this.inputBeneficiaryName = page.getByTestId('input-beneficiary-name');
         this.inputBeneficiaryIBAN = page.getByTestId('input-beneficiary-iban');
         this.saveBeneficiaryButton = page.getByTestId('btn-save-beneficiary');
+
     }
 
     async checkFormTransfer() {
@@ -58,6 +59,19 @@ export class TransferPage {
         await this.selectFromAccountDropdown.selectOption({ value: String(fromAccountId) });
         await this.selectToAccountDropdown.selectOption({ value: String(toAccountId) });
         await this.inputAmount.fill(amount.toString());
+        await this.inputDescription.fill(description);
+        await this.sumitTransfertButton.click();
+    }
+
+    async virementExterne(fromAccountId: number, beneficiaryName: string, amount: number, description: string) {
+        await this.externalTab.click();
+        await this.selectFromAccountDropdown.selectOption({ value: String(fromAccountId) });
+
+        await this.beneficiariesList
+            .locator('.beneficiary-option', { hasText: beneficiaryName })
+            .click();
+        await expect(this.beneficiariesList.locator('.beneficiary-option.selected')).toContainText(beneficiaryName);
+        await this.inputAmount.fill(String(amount));
         await this.inputDescription.fill(description);
         await this.sumitTransfertButton.click();
     }
