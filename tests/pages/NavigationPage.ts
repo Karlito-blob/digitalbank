@@ -30,7 +30,7 @@ export class NavigationPage {
     }
 
     async navigateToLogin() {
-        await this.page.goto("/");
+        await this.page.goto("/app/index.html");
         await expect(this.contentLogin).toBeVisible();
     }
 
