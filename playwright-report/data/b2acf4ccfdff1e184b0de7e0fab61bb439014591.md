@@ -1,0 +1,61 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - textbox "Search" [ref=e2]
+  - generic [ref=e3]:
+    - heading "~ /" [level=1] [ref=e4]:
+      - link "~" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - text: /
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "app 04/03/2026 13:40:09" [ref=e8] [cursor=pointer]:
+          - /url: /app
+          - generic [ref=e9]: app
+          - generic [ref=e10]: 04/03/2026 13:40:09
+      - listitem [ref=e11]:
+        - link "node_modules 04/03/2026 13:39:50" [ref=e12] [cursor=pointer]:
+          - /url: /node_modules
+          - generic [ref=e13]: node_modules
+          - generic [ref=e14]: 04/03/2026 13:39:50
+      - listitem [ref=e15]:
+        - link "playwright-report 04/03/2026 15:34:57" [ref=e16] [cursor=pointer]:
+          - /url: /playwright-report
+          - generic [ref=e17]: playwright-report
+          - generic [ref=e18]: 04/03/2026 15:34:57
+      - listitem [ref=e19]:
+        - link "test-results 04/03/2026 15:39:32" [ref=e20] [cursor=pointer]:
+          - /url: /test-results
+          - generic [ref=e21]: test-results
+          - generic [ref=e22]: 04/03/2026 15:39:32
+      - listitem [ref=e23]:
+        - link "tests 04/03/2026 15:39:22" [ref=e24] [cursor=pointer]:
+          - /url: /tests
+          - generic [ref=e25]: tests
+          - generic [ref=e26]: 04/03/2026 15:39:22
+      - listitem [ref=e27]:
+        - link "package-lock.json 38124 04/03/2026 13:38:02" [ref=e28] [cursor=pointer]:
+          - /url: /package-lock.json
+          - generic [ref=e29]: package-lock.json
+          - generic [ref=e30]: "38124"
+          - generic [ref=e31]: 04/03/2026 13:38:02
+      - listitem [ref=e32]:
+        - link "package.json 309 04/03/2026 13:38:02" [ref=e33] [cursor=pointer]:
+          - /url: /package.json
+          - generic [ref=e34]: package.json
+          - generic [ref=e35]: "309"
+          - generic [ref=e36]: 04/03/2026 13:38:02
+      - listitem [ref=e37]:
+        - link "playwright.config.ts 2338 04/03/2026 15:33:09" [ref=e38] [cursor=pointer]:
+          - /url: /playwright.config.ts
+          - generic [ref=e39]: playwright.config.ts
+          - generic [ref=e40]: "2338"
+          - generic [ref=e41]: 04/03/2026 15:33:09
+      - listitem [ref=e42]:
+        - link "README.md 2014 17/01/2026 04:06:29" [ref=e43] [cursor=pointer]:
+          - /url: /README.md
+          - generic [ref=e44]: README.md
+          - generic [ref=e45]: "2014"
+          - generic [ref=e46]: 17/01/2026 04:06:29
+```
