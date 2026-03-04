@@ -12,6 +12,7 @@ const individu = jddMarie;
 const valid2FACode = twoFactorAuthFixture.valid_code;
 
 test.describe("Smoke Test -  Accès aux pages", () => {
+    
     let connexionPage: ConnexionPage;
     let navigationPage: NavigationPage;
 

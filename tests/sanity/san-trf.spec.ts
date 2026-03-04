@@ -37,7 +37,7 @@ test.describe("Sanity tests - Virements interne", () => {
       
     test("SAN-TRF-INT-02 - Rejet virement montant nul", async ({ page }) => {
         await transferPage.virementInterne(individu.accounts[0].id, individu.accounts[1].id, -100, "Virement test");
-        await expectMessage(transferPage.errorMessage, messagesFixture.error_messages.insufficient_montant);
+        await expectMessage(transferPage.errorTransfertMessage, messagesFixture.error_messages.insufficient_montant);
     });
 
     test("SAN-TRF-INT-03 - Rejet virement solde insuffisant", async ({ page }) => {
@@ -98,6 +98,6 @@ test.describe("Sanity tests - Ajout bénéficiaire", () => {
 
     test("SAN-BEN-03 - Ajout bénéficiaire avec IBAN invalide", async ({ page }) => {
         await transferPage.addNewBeneficiaire("Jean Dupont", "invalid_iban");
-        await expectMessage(transferPage.errorMessage, messagesFixture.error_messages.invalid_iban);
+        await expectMessage(transferPage.errorBeneficiaryMessage, messagesFixture.error_messages.invalid_iban);
     });
 });

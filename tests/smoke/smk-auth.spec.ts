@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test } from "@playwright/test";
 
 // Import des Pages
 import { ConnexionPage } from "../pages/ConnexionPage";
@@ -8,8 +8,10 @@ import { NavigationPage } from "../pages/NavigationPage";
 // Import du jeu de donnée
 import { jddJean } from "../fixtures/jdd.fixture";
 
+const individu = jddJean;
+
 test.describe("Authentication Smoke Tests", () => {
-    const individu = jddJean;
+
     let connexionPage: ConnexionPage;
     let dashboardPage: DashboardPage;
     let navigationPage: NavigationPage;
