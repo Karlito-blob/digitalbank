@@ -1,16 +1,16 @@
 import { test, expect } from "@playwright/test";
 
-//POM
+// Import des Pages
 import { ConnexionPage } from "../pages/ConnexionPage";
 import { NavigationPage } from "../pages/NavigationPage";
 import { SecurityPage } from "../pages/SecurityPage";
 
-// Fixtures
+// Import des jeux de données
 import { messagesFixture } from "../fixtures/alertMessage.fixture";
 import { passwordsFixture } from "../fixtures/password.fixture";
 import { jddJean } from "../fixtures/jdd.fixture";
 
-// utils
+// Import des fonctions utilitaires
 import { expectMessage } from "../utils/expectMessage.utils";
 import { expectPasswordRequirements } from "../utils/passwordRequirements";
 import { setToggle } from "../utils/toggle.utils";
@@ -34,7 +34,7 @@ async function openChangePasswordModal(securityPage: SecurityPage) {
     await securityPage.expectRequirementsVisible();
 }
 
-test.describe("Sanity tests - ", () => {
+test.describe("Sanity tests -  ", () => {
     let connexionPage: ConnexionPage;
     let navigationPage: NavigationPage;
     let securityPage: SecurityPage;
@@ -44,12 +44,14 @@ test.describe("Sanity tests - ", () => {
         navigationPage = new NavigationPage(page);
         securityPage = new SecurityPage(page);
         await navigationPage.navigateToLogin();
+        // Given un utilisateur connecté
         await connexionPage.login(individu.user.email, individu.user.password);
+        // When il accède à la page de sécurité
         await navigationPage.navigateToSecurityPage();
     });
 
     test("SAN-SEC-01 - Consultation infos sécurité", async ({ page }) => {
-        // await securityPage.verifyTogglesVisible();
+        // Then il voit ses informations de sécurité
         await securityPage.verifyUserInfo(individu.user.name, individu.user.email, individu.user.phone);
     });
 });

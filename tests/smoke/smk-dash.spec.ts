@@ -5,7 +5,7 @@ import { ConnexionPage } from "../pages/ConnexionPage";
 import { DashboardPage } from "../pages/DashboardPage";
 import { NavigationPage } from "../pages/NavigationPage";
 
-// Import du jeu de donnée
+// Import des jeux de données
 import { jddJean } from "../fixtures/jdd.fixture";
 
 const individu = jddJean;

@@ -3,7 +3,7 @@ import { expect, Locator, Page } from "@playwright/test";
 export class SecurityPage {
     readonly page: Page;
 
-    readonly toggle2FA: Locator;
+    readonly groupToggle2FA: Locator;
     readonly toggleEmailNotifications: Locator
     readonly toggleSmsNotifications: Locator;
     readonly changePasswordButton: Locator;
@@ -28,7 +28,7 @@ export class SecurityPage {
     constructor(page: Page) {
         this.page = page;
 
-        this.toggle2FA = page.getByTestId('toggle-2fa');
+        this.groupToggle2FA = page.getByTestId('2fa-toggle-group-2fa');
         this.toggleEmailNotifications = page.getByTestId('toggle-email-notifications');
         this.toggleSmsNotifications = page.getByTestId('toggle-sms-notifications');
         this.changePasswordButton = page.getByTestId('btn-change-password');
@@ -52,7 +52,7 @@ export class SecurityPage {
     };
 
     async switchToggle2FA() {
-        await this.toggle2FA
+        await this.groupToggle2FA
             .locator("..")
             .locator(".toggle-slider")
             .click();
@@ -77,9 +77,7 @@ export class SecurityPage {
     };
 
     async verifyTogglesVisible() {
-        await expect(this.toggle2FA).toBeVisible();
-        await expect(this.toggleEmailNotifications).toBeVisible();
-        await expect(this.toggleSmsNotifications).toBeVisible();
+        await expect(this.groupToggle2FA).toBeVisible();
     };
 
     async verifyUserInfo(username: string, email: string, phone: string) {

@@ -4,7 +4,7 @@ import { test } from "@playwright/test";
 import { ConnexionPage } from "../pages/ConnexionPage";
 import { NavigationPage } from "../pages/NavigationPage";
 
-// Import du jeu de donnée
+// Import des jeux de données
 import { jddMarie } from "../fixtures/jdd.fixture";
 import { twoFactorAuthFixture } from "../fixtures/2fa.fixture";
 

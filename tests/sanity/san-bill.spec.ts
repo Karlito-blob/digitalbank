@@ -13,7 +13,6 @@ import { jddJean } from "../fixtures/jdd.fixture";
 // utils
 import { expectMessage } from "../utils/expectMessage.utils";
 
-// variables globales
 const individu = jddJean;
 
 

@@ -1,21 +1,20 @@
-/* eslint-disable testing-library/prefer-screen-queries */
 import { test } from "@playwright/test";
 
-//POM
+// Import des Pages
 import { ConnexionPage } from "../pages/ConnexionPage";
 import { DashboardPage } from "../pages/DashboardPage";
 import { NavigationPage } from "../pages/NavigationPage";
 
-// Fixtures
+// Import des jeux de données
 import { messagesFixture } from "../fixtures/alertMessage.fixture";
 import { jddTest } from "../fixtures/jdd.fixture";
 import { twoFactorAuthFixture } from "../fixtures/2fa.fixture";
 
-// utils
+// Import des fonctions utilitaires
 import { expectMessage } from "../utils/expectMessage.utils";
 
-// variables globales
 const individu = jddTest;
+const valid2FACode = twoFactorAuthFixture.valid_code;
 
 test.describe("Sanity tests - Soldes", () => {
     let connexionPage: ConnexionPage;
