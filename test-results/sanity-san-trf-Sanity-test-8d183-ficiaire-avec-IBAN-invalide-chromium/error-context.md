@@ -1,0 +1,68 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - generic [ref=e3]: 🧪 MODE TEST - Application DigitalBank pour examen d'automatisation
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]: DB
+      - generic [ref=e7]: DigitalBank
+    - generic [ref=e8]:
+      - generic [ref=e9]: Jean Dupont
+      - button "Déconnexion" [ref=e10] [cursor=pointer]
+  - navigation "Navigation principale" [ref=e11]:
+    - button "Mes Comptes" [ref=e12] [cursor=pointer]
+    - button "Virements" [ref=e13] [cursor=pointer]
+    - button "Factures" [ref=e14] [cursor=pointer]
+    - button "Sécurité" [ref=e15] [cursor=pointer]
+  - main [ref=e16]:
+    - generic [ref=e17]:
+      - heading "Effectuer un virement" [level=2] [ref=e18]
+      - generic [ref=e19]:
+        - button "Entre mes comptes" [ref=e20] [cursor=pointer]
+        - button "Vers un tiers" [ref=e21] [cursor=pointer]
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - generic [ref=e24]: Compte débiteur
+          - combobox "Compte débiteur" [ref=e25]:
+            - option "Compte Courant - 3 547,82 €" [selected]
+            - option "Livret A - 12 500,00 €"
+        - generic [ref=e26]:
+          - generic [ref=e27]: Bénéficiaire
+          - generic [ref=e28]:
+            - generic [ref=e29] [cursor=pointer]:
+              - generic [ref=e30]: Pierre Durant
+              - generic [ref=e31]: FR76 5555 6666 7777 8888 9999 000
+            - generic [ref=e32] [cursor=pointer]:
+              - generic [ref=e33]: Sophie Leroux
+              - generic [ref=e34]: FR76 1111 2222 3333 4444 5555 666
+          - button "+ Ajouter un bénéficiaire" [ref=e35] [cursor=pointer]
+        - generic [ref=e36]:
+          - generic [ref=e37]:
+            - generic [ref=e38]: Montant (€)
+            - spinbutton "Montant (€)" [ref=e39]
+          - generic [ref=e40]:
+            - generic [ref=e41]: Motif (optionnel)
+            - textbox "Motif (optionnel)" [ref=e42]:
+              - /placeholder: "Ex: Remboursement"
+        - button "Effectuer le virement" [ref=e43] [cursor=pointer]
+    - generic [ref=e45]:
+      - heading "Ajouter un bénéficiaire" [level=3] [ref=e46]
+      - generic [ref=e47]:
+        - generic [ref=e48]: Nom du bénéficiaire
+        - textbox "Nom du bénéficiaire" [ref=e49]:
+          - /placeholder: Jean Dupont
+          - text: Jean Dupont
+      - generic [ref=e50]:
+        - generic [ref=e51]: IBAN
+        - textbox "IBAN" [ref=e52]:
+          - /placeholder: FR76 XXXX XXXX XXXX XXXX XXXX XXX
+          - text: invalid_iban
+        - text: "Format: FR76 suivi de 23 chiffres"
+      - generic [ref=e53]:
+        - button "Annuler" [ref=e54] [cursor=pointer]
+        - button "Ajouter" [active] [ref=e55] [cursor=pointer]
+  - contentinfo [ref=e56]:
+    - text: © 2025 DigitalBank - Application de test pour automatisation
+    - generic [ref=e57]: Conforme RGPD • WCAG 2.1 AA • Éco-conception
+```

@@ -1,0 +1,48 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - generic [ref=e3]: 🧪 MODE TEST - Application DigitalBank pour examen d'automatisation
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]: DB
+      - generic [ref=e7]: DigitalBank
+    - generic [ref=e8]:
+      - generic [ref=e9]: Jean Dupont
+      - button "Déconnexion" [ref=e10] [cursor=pointer]
+  - navigation "Navigation principale" [ref=e11]:
+    - button "Mes Comptes" [ref=e12] [cursor=pointer]
+    - button "Virements" [ref=e13] [cursor=pointer]
+    - button "Factures" [ref=e14] [cursor=pointer]
+    - button "Sécurité" [ref=e15] [cursor=pointer]
+  - main [ref=e16]:
+    - generic [ref=e17]:
+      - heading "Effectuer un virement" [level=2] [ref=e18]
+      - generic [ref=e19]:
+        - button "Entre mes comptes" [ref=e20] [cursor=pointer]
+        - button "Vers un tiers" [ref=e21] [cursor=pointer]
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - generic [ref=e24]: Compte débiteur
+          - combobox "Compte débiteur" [ref=e25]:
+            - option "Compte Courant - 3 547,82 €" [selected]
+            - option "Livret A - 12 500,00 €"
+        - generic [ref=e26]:
+          - generic [ref=e27]: Compte créditeur
+          - combobox "Compte créditeur" [ref=e28]:
+            - option "Sélectionner un compte"
+            - option "Livret A - 12 500,00 €" [selected]
+        - generic [ref=e29]:
+          - generic [ref=e30]:
+            - generic [ref=e31]: Montant (€)
+            - spinbutton "Montant (€)" [active] [ref=e32]: "-100"
+          - generic [ref=e33]:
+            - generic [ref=e34]: Motif (optionnel)
+            - textbox "Motif (optionnel)" [ref=e35]:
+              - /placeholder: "Ex: Remboursement"
+              - text: Virement test
+        - button "Effectuer le virement" [ref=e36] [cursor=pointer]
+  - contentinfo [ref=e37]:
+    - text: © 2025 DigitalBank - Application de test pour automatisation
+    - generic [ref=e38]: Conforme RGPD • WCAG 2.1 AA • Éco-conception
+```
