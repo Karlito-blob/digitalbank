@@ -33,7 +33,7 @@ test.describe("E2E - Settings 2FA ", () => {
     test("E2E-2FA-TGL-01 - Login avec 2FA activé", async ({ page }) => {
         await connexionPage.login(individu.user.email, individu.user.password);
         await navigationPage.navigateToSecurityPage();
-        await setToggle(securityPage.toggle2FA, true);
+        await setToggle(securityPage.groupToggle2FA, true);
         await navigationPage.logout();
         await connexionPage.loginWith2FA(individu.user.email, individu.user.password, valid2FACode)
         await navigationPage.navigateToSecurityPage();

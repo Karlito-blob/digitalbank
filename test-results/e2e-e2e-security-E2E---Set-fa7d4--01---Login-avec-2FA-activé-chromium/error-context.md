@@ -1,0 +1,54 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - generic [ref=e3]: 🧪 MODE TEST - Application DigitalBank pour examen d'automatisation
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]: DB
+      - generic [ref=e7]: DigitalBank
+    - generic [ref=e8]:
+      - generic [ref=e9]: Jean Dupont
+      - button "Déconnexion" [ref=e10] [cursor=pointer]
+  - navigation "Navigation principale" [ref=e11]:
+    - button "Mes Comptes" [ref=e12] [cursor=pointer]
+    - button "Virements" [ref=e13] [cursor=pointer]
+    - button "Factures" [ref=e14] [cursor=pointer]
+    - button "Sécurité" [ref=e15] [cursor=pointer]
+  - main [ref=e16]:
+    - generic [ref=e17]:
+      - heading "Paramètres de sécurité" [level=2] [ref=e18]
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - generic [ref=e21]: Double authentification (2FA)
+          - generic [ref=e22]: Ajoutez une couche de sécurité supplémentaire avec un code SMS
+        - generic [ref=e23]:
+          - checkbox
+      - generic [ref=e25]:
+        - generic [ref=e26]:
+          - generic [ref=e27]: Notifications par email
+          - generic [ref=e28]: Recevez des alertes pour les transactions importantes
+        - generic [ref=e29]:
+          - checkbox [checked]
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - generic [ref=e33]: Notifications SMS
+          - generic [ref=e34]: Recevez des SMS pour les virements supérieurs à 500€
+        - generic [ref=e35]:
+          - checkbox
+      - button "Modifier le mot de passe" [ref=e38] [cursor=pointer]
+    - generic [ref=e39]:
+      - heading "Informations du compte" [level=3] [ref=e40]
+      - generic [ref=e41]:
+        - generic [ref=e42]: Nom complet
+        - paragraph [ref=e43]: Jean Dupont
+      - generic [ref=e44]:
+        - generic [ref=e45]: Email
+        - paragraph [ref=e46]: jean.dupont@email.com
+      - generic [ref=e47]:
+        - generic [ref=e48]: Téléphone
+        - paragraph [ref=e49]: +33 6 12 34 56 78
+  - contentinfo [ref=e50]:
+    - text: © 2025 DigitalBank - Application de test pour automatisation
+    - generic [ref=e51]: Conforme RGPD • WCAG 2.1 AA • Éco-conception
+```
